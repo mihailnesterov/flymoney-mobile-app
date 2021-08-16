@@ -12,8 +12,7 @@ import {
     FlatList, 
     ActivityIndicator 
 } from 'react-native';
-import styled from 'styled-components/native';
-import Theme from './themes/default';
+import theme from './themes/default';
 import { getAllProducts } from './api/products';
 import { getAllFlymoneyExchange } from './api/posts';
 /*import Send from './components/Send';
@@ -52,13 +51,11 @@ export default function App() {
             .finally(() => setLoading(false));
     }, []);
 
-    console.log(products, exchangeRates);
+    //console.log(theme, store.getState());
 
-return (
-    <Provider store={store}>
-        <Theme>
-            
-            <Wrapper>
+    return (
+        <Provider store={store}>
+            <View style={styles.container}>
                 <Text>Банки:</Text>
                 {isLoading ? <ActivityIndicator/> : (
                     <FlatList
@@ -84,37 +81,19 @@ return (
                     />
                 )}
                 <StatusBar style="auto" />
-            </Wrapper>
-        </Theme>
-    </Provider>
-);
+            </View>
+        </Provider>
+    );
 }
 
-const Wrapper = styled.View`
-    /*display: ${({ theme: { display } }) => display.flex};
-    align-items: ${({ theme: { alignItems } }) => alignItems.start};
-    justify-content: ${({ theme: { justifyContent } }) => justifyContent.between};
-    gap: ${({ theme: { sizes } }) => sizes.xlarge};*/
-    padding: 0;
-    margin: ${({ theme: { sizes } }) => sizes.small} 0;
-    margin-top: 60;
-    background-color: ${({ theme: { colors } }) => colors.transparent};
-    /*@media (max-width: 1199.98px) {
-        display: ${({ theme: { display } }) => display.flex};
-        align-items: ${({ theme: { alignItems } }) => alignItems.start};
-        justify-content: ${({ theme: { justifyContent } }) => justifyContent.between};
-    }
-    @media (max-width: 767.98px) {
-        display: ${({ theme: { display } }) => display.block};
-    }*/
-`;
-
-/*const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 60
-  },
-});*/
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        borderTopColor: theme.colors.light,
+        borderTopWidth: StyleSheet.hairlineWidth * 2,
+        padding: theme.sizes.small,
+        margin: theme.sizes.none,
+        marginTop: theme.sizes.xlarge * 1.6,
+        backgroundColor: theme.colors.white
+    },
+});

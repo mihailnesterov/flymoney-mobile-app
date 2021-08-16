@@ -1,7 +1,4 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components/native';
-
-const theme = {
+export default {
     colors: {
         white: "#ffffff",
         light: "#e0e0e0",
@@ -11,17 +8,17 @@ const theme = {
     },
     sizes: {
         none: 0,
-        xsmall: "0.5rem",
-        small: "1rem",
-        medium: "1.2rem",
-        large: "1.5rem",
-        xlarge: "2rem"
+        xsmall: 7,
+        small: 12,
+        medium: 14,
+        large: 18,
+        xlarge: 24
     },
     fontWeight: {
-        normal: "normal",
-        lighter: "lighter",
-        bolder: "bolder",
-        bold: "bold"
+        normal: 400,
+        lighter: 500,
+        bolder: 700,
+        bold: 900
     },
     shadow: {
         xsmall: "1px 1px 1px rgba(0,0,0,0.1)",
@@ -62,11 +59,5 @@ const theme = {
         left: 'left',
         right: 'right',
         justify: 'justify'
-    },
-};
-
-const Theme = ({ children }) => (
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
-
-export default Theme;
+    }
+}
