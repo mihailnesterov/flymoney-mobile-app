@@ -17,6 +17,8 @@ web-build/
 
 # misc
 assets
-components
-containers
+components/**/*.js
+!components/Customer.js
+containers/**/*.js
+!containers/Pannel.js
 api

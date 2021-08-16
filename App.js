@@ -22,7 +22,7 @@ import Loader from './components/Loader';
 import Modal from './containers/Modal';
 import Order from './components/Order';
 import Pannel from './containers/Pannel';*/
-//import Customer from './components/Customer';
+import Customer from './components/Customer';
 //import LastExchanges from './components/LastExchanges';
 
 
@@ -37,7 +37,7 @@ export default function App() {
             .then((response) => response.json())
             .then((json) => setExchangeRates(json))
             .catch((error) => {
-                console.error(error);
+                console.log(error);
             })
             .finally(() => setLoading(false));
     }, []);
@@ -55,24 +55,25 @@ export default function App() {
 
     return (
         <Provider store={store}>
+            <Customer />
             <View style={styles.container}>
                 <Text>Банки:</Text>
-                {isLoading ? <ActivityIndicator/> : (
+                {isLoading ? <ActivityIndicator animating={true} size="large" /> : (
                     <FlatList
                         style={{padding:10}}
                         data={products}
-                        keyExtractor={({ id }, index) => id}
+                        keyExtractor={({ id }, index) => index.toString()}
                         renderItem={({ item }) => (
                             <Text style={{fontSize:16, marginBottom:10}}>{item.id}  {item.name} {item.variations.length}</Text>
                         )}
                     />
                 )}
                 <Text>Курсы валют:</Text>
-                {isLoading ? <ActivityIndicator/> : (
+                {isLoading ? <ActivityIndicator animating={true} size="large" /> : (
                     <FlatList
                         style={{padding:10}}
                         data={exchangeRates}
-                        keyExtractor={({ id }, index) => id}
+                        keyExtractor={({ id }, index) => index.toString()}
                         renderItem={({ item }) => (
                             <Text style={{fontSize:16, marginBottom:10}}>
                                 {item.id} {item.title.rendered}  {item.meta.flymoney_exchange_meta_base_name}
@@ -86,12 +87,13 @@ export default function App() {
     );
 }
 
+const { one } = theme.flex;
 const { light, white } = theme.colors;
 const { none, small, xlarge } = theme.sizes;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: one,
         borderTopColor: light,
         borderTopWidth: ( StyleSheet.hairlineWidth * 2 ),
         padding: small,
