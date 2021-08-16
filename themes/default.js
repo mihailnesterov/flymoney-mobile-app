@@ -15,10 +15,10 @@ export default {
         xlarge: 24
     },
     fontWeight: {
-        normal: 400,
-        lighter: 500,
-        bolder: 700,
-        bold: 900
+        normal: "400",
+        lighter: "500",
+        bolder: "700",
+        bold: "900"
     },
     shadow: {
         xsmall: "1px 1px 1px rgba(0,0,0,0.1)",
@@ -60,4 +60,4 @@ export default {
         right: 'right',
         justify: 'justify'
     }
-}
+};
