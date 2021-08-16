@@ -10,6 +10,7 @@ import {
     FlatList, 
     ActivityIndicator 
 } from 'react-native';
+import Theme from './themes/default';
 import { getAllProducts } from './api/products';
 import { getAllFlymoneyExchange } from './api/posts';
 
@@ -42,33 +43,36 @@ export default function App() {
     console.log(products, exchangeRates);
 
 return (
-    <View style={styles.container}>
-        <Text>Банки:</Text>
-        {isLoading ? <ActivityIndicator/> : (
-            <FlatList
-                style={{padding:10}}
-                data={products}
-                keyExtractor={({ id }, index) => id}
-                renderItem={({ item }) => (
-                    <Text style={{fontSize:16, marginBottom:10}}>{item.id}  {item.name} {item.variations.length}</Text>
-                )}
-            />
-        )}
-        <Text>Курсы валют:</Text>
-        {isLoading ? <ActivityIndicator/> : (
-            <FlatList
-                style={{padding:10}}
-                data={exchangeRates}
-                keyExtractor={({ id }, index) => id}
-                renderItem={({ item }) => (
-                    <Text style={{fontSize:16, marginBottom:10}}>
-                        {item.id} {item.title.rendered}  {item.meta.flymoney_exchange_meta_base_name}
-                    </Text>
-                )}
-            />
-        )}
-        <StatusBar style="auto" />
-    </View>
+    
+    <Theme>
+        <View style={styles.container}>
+            <Text>Банки:</Text>
+            {isLoading ? <ActivityIndicator/> : (
+                <FlatList
+                    style={{padding:10}}
+                    data={products}
+                    keyExtractor={({ id }, index) => id}
+                    renderItem={({ item }) => (
+                        <Text style={{fontSize:16, marginBottom:10}}>{item.id}  {item.name} {item.variations.length}</Text>
+                    )}
+                />
+            )}
+            <Text>Курсы валют:</Text>
+            {isLoading ? <ActivityIndicator/> : (
+                <FlatList
+                    style={{padding:10}}
+                    data={exchangeRates}
+                    keyExtractor={({ id }, index) => id}
+                    renderItem={({ item }) => (
+                        <Text style={{fontSize:16, marginBottom:10}}>
+                            {item.id} {item.title.rendered}  {item.meta.flymoney_exchange_meta_base_name}
+                        </Text>
+                    )}
+                />
+            )}
+            <StatusBar style="auto" />
+        </View>
+    </Theme>
 );
 }
 
