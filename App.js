@@ -86,14 +86,17 @@ export default function App() {
     );
 }
 
+const { light, white } = theme.colors;
+const { none, small, xlarge } = theme.sizes;
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        borderTopColor: theme.colors.light,
-        borderTopWidth: StyleSheet.hairlineWidth * 2,
-        padding: theme.sizes.small,
-        margin: theme.sizes.none,
-        marginTop: theme.sizes.xlarge * 1.6,
-        backgroundColor: theme.colors.white
+        borderTopColor: light,
+        borderTopWidth: ( StyleSheet.hairlineWidth * 2 ),
+        padding: small,
+        margin: none,
+        marginTop: ( xlarge * 1.6 ),
+        backgroundColor: white
     },
 });
