@@ -55,9 +55,9 @@ export default {
         noWrap: 'no-wrap',
     },
     textAlign: {
-        center: 'center',
-        left: 'left',
-        right: 'right',
-        justify: 'justify'
+        alignCenter: 'center',
+        alignLeft: 'left',
+        alignRight: 'right',
+        alignJustify: 'justify'
     }
 };

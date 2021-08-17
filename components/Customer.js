@@ -49,7 +49,7 @@ const Customer = (props) => {
     const [user, setUser] = useState(null);
     const [customer, setCustomer] = useState(null);
 
-    useEffect(() => {
+    useMemo(() => {
         
         if( user_id > 0 ) {
             getCurrentUser( user_id )
@@ -65,7 +65,7 @@ const Customer = (props) => {
             getCustomerById(user.id)
                 .then(response => {
                     setCustomer(response)
-                    console.log('getCustomerById',user_id,response)
+                    console.log('getCustomerById',user_id,response) //
                 })
                 .catch(error => console.log("Error Getting WC Customer by ID", error));
         }
@@ -76,7 +76,7 @@ const Customer = (props) => {
         
         if( customer ) {
             setCustomerSuccess(customer);
-            console.log('setCustomerSuccess',customer)
+            console.log('setCustomerSuccess',customer) //
         } 
         
         return () => {
@@ -90,6 +90,7 @@ const Customer = (props) => {
         customer &&
         getOrders()
             .then((response) => {
+                console.log('getOrders response',response);
                 setCustomerOrders(
                     response.sort((a,b) => 
                     (a.date_created < b.date_created) ? 
@@ -126,7 +127,7 @@ const Customer = (props) => {
 
     
 	return(
-        !isCustomerHasOrders &&
+        isCustomerHasOrders &&
         <View style={styles.container}>
             <Pannel>
                 <Text>Неоплаченные заявки</Text>
