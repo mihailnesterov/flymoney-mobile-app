@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
     StyleSheet, 
     Text, 
@@ -7,20 +7,34 @@ import {
 } from 'react-native';
 import { Fontisto } from '@expo/vector-icons'; 
 import theme from '../themes/default';
+import TopMenu from './toolbar/TopMenu';
 
 export default ToolBar = () => {
 
     const iconSize = theme.sizes.xlarge;
     const iconColor = theme.colors.darkblue;
-    
+
+    const [isTopMenuHidden, setTopMenuHidden] = useState(false);
+
+    const topMenuButtonTransformedStyle =
+            isTopMenuHidden ?
+            styles.topMenuButtonTransform :
+            {};
+
     return (
         <View style={styles.toolbar}>
-            
-            
             <View style={styles.topContainer}>
-                <Text style={styles.topMenu}>
+                <Text 
+                    style={[
+                        styles.topMenuButton, 
+                        topMenuButtonTransformedStyle
+                    ]}
+                    onPress={() => setTopMenuHidden( !isTopMenuHidden )}
+                >
                     <Fontisto name="nav-icon-a" size={18} color="white" />
                 </Text>
+
+                <TopMenu isHidden={isTopMenuHidden} />
                 
                 <Text style={styles.topText}>
                     Время работы сервиса с 09:00 - 21:00
@@ -57,12 +71,8 @@ export default ToolBar = () => {
                             color={iconColor} 
                         />
                     </Text>
-
                 </View>
             </View>
-                
-            
-            
         </View>
     );
 }
@@ -78,20 +88,32 @@ const { alignCenter, alignLeft, alignRight } = theme.textAlign;
 const styles = StyleSheet.create({
     toolbar: {
         flex: none,
+        zIndex: 1,
+        elevation: 1,
         marginTop: ( xlarge * 1.6 ),
         backgroundColor: layout
     },
     topContainer: {
         flex: none,
+        zIndex: 1,
+        elevation: 1,
         display: flex,
         flexDirection: row,
         backgroundColor: darkblue,
         padding: small,
         textAlign: alignCenter
     },
-    topMenu: {
+    topMenuButton: {
         flex: 1,
-        textAlign: alignLeft
+        textAlign: alignLeft,
+    },
+    topMenuButtonTransform: {
+        marginLeft: none,
+        marginTop: -small,
+        transform: [
+            { skewX: "50deg" },
+            { skewY: "-40deg" }
+        ]
     },
     topText: {
         flex: 10,
