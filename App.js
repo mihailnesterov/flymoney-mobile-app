@@ -7,45 +7,56 @@ import {
     Text, 
     Image,
     View, 
+    ScrollView,
+    SafeAreaView,
     Button, 
     TextInput, 
     FlatList, 
-    ActivityIndicator 
+    ActivityIndicator,
+    useColorScheme,
+    TouchableOpacity
 } from 'react-native';
+/*import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';*/
 import theme from './themes/default';
 import { getAllProducts, getProductVariations } from './api/products';
 import { getAllFlymoneyExchange } from './api/posts';
+import ToolBar from './components/ToolBar';
 import Customer from './components/Customer';
 
 
-const ToolBar = () => {
+/*const ToolBar = () => {
     
     return (
         <View style={styles.toolbar}>
             
             <Image
                     style={styles.logo}
-                    source={require('./assets/flymoney/flymoney.biz-logo-300x69.png')}
+                    source={require('./assets/flymoney/xlogo.png.pagespeed.ic.HXO2Kydk5b.png')}
                     onLoad={() => console.log('image')}
                     
                 />
             
-            {/**/}
             <View style={styles.menu}>
                 <Text style={styles.menuItem}>&#128100; выйти</Text>
             </View>
             
         </View>
     );
-}
+}*/
 
 export default function App() {
 
     const [exchangeRates, setExchangeRates] = useState([]);
     const [products, setProducts] = useState([]);
-    const [product, setProduct] = useState(null);
     const [isLoading, setLoading] = useState(true);
     const [searchString, setSearchString] = useState(null);
+    const colorScheme = useColorScheme();
+    
+    const themeContainerStyle = 
+        colorScheme === 'dark' ? 
+        styles.containerLightTheme : 
+        styles.containerDarkTheme;
     
 
     useEffect(() => {
@@ -66,36 +77,39 @@ export default function App() {
             })
             .finally(() => setLoading(false));
     }, []);
-
-    useEffect(() => {
-        
-        
-        if( products.length > 0 ) {
-            setProduct(products.filter((item) => item.id === 69)[0]);
-            
-        }
-
-    }, [products]);
     
-    console.log('setProduct', product);
+    console.log('colorScheme', colorScheme);
 
     return (
         <Provider store={store}>
-            <View style={styles.container}>
-                <ToolBar />
-                <Customer />
-                {
-                    product && 
-                        <Text>Продукт: {product.id} {product.name} {product.variations.length}</Text>
-                }
+            <ToolBar />
+            <SafeAreaView style={[styles.container, themeContainerStyle]}>
                 
-                <Text style={{marginTop:10,marginBottom:3, fontSize:20}}>Отдаете:</Text>
+                <Customer />
+                {/*<Text>{colorScheme}</Text>*/}
+                <SafeAreaView style={{
+                    flex: 1,
+                    backgroundColor: '#ffffff',
+                    borderWidth: 2,
+                    borderColor: '#f0f0f0',
+                    padding:15,
+                    borderRadius: 10,
+                }}>
+                <Text style={{marginTop:0,marginBottom:3, fontSize:20}}>Отдаете:</Text>
                 <TextInput
                     //defaultValue={'0,00'}
                     value={searchString}
                     keyboardType='number-pad'
-                    style={{marginTop:5,marginBottom:0, padding:10, fontSize:20,borderWidth: 1,
-                    borderColor: '#f0f0f0'}}
+                    style={{
+                        marginTop:5,
+                        marginBottom:0, 
+                        padding:10, 
+                        fontSize:20,
+                        borderWidth: 1,
+                        borderColor: '#9977F6',
+                        borderRadius: 3,
+                        marginBottom: 10,
+                    }}
                     placeholder="0,00"
                     onChangeText={(text) => setSearchString((text === '0' || text === '0.00') ? '' : text)}
                 />
@@ -103,12 +117,12 @@ export default function App() {
                 {isLoading ? <ActivityIndicator animating={true} size="large" /> : (
                     <FlatList
                         style={{padding:0}}
-                        data={products}
+                        data={products.filter((item) => item.variations.length > 0)}
                         keyExtractor={({ id }, index) => index.toString()}
                         renderItem={({ item }) => (
                             
-                            <Text style={{fontSize:20, padding:8, paddingTop:12, paddingBottom:12, borderTopWidth: 1,
-                                borderTopColor: '#f0f0f0'}}
+                            <Text style={{fontSize:18, padding:8, paddingTop:12, paddingBottom:12, borderWidth: 1,
+                                borderColor: '#f0f0f0', marginBottom: 10, borderRadius: 3,}}
                                 onPress = { (e) => {console.log('text bank:', e)} }
                                 >
                                     {
@@ -121,11 +135,12 @@ export default function App() {
                                         '    '
                                     }
                                 {'    '}
-                                <Text style={{marginLeft:15, color: "blue"}}>{`${item.name} ${item.variations.length}`}</Text>
+                                <Text style={{marginLeft:15, color: "#222222"}}>{item.name}</Text>
                             </Text>
                         )}
                     />
                 )}
+                </SafeAreaView>
                 <Text>Курсы валют:</Text>
                 {/*isLoading ? <ActivityIndicator animating={true} size="large" /> : (
                     <FlatList
@@ -146,7 +161,7 @@ export default function App() {
                     />
                 )*/}
                 <StatusBar style="auto" />
-            </View>
+            </SafeAreaView>
         </Provider>
     );
 }
@@ -163,10 +178,17 @@ const styles = StyleSheet.create({
         flex: one,
         borderTopColor: light,
         borderTopWidth: ( StyleSheet.hairlineWidth * 2 ),
-        padding: small,
+        padding: none,
         margin: none,
-        marginTop: ( xlarge * 1.6 ),
-        backgroundColor: white
+        //marginTop: ( xlarge * 1.6 ),
+        backgroundColor: white,
+        backgroundColor: '#c5f6e3'
+    },
+    containerLightTheme: {
+        backgroundColor: '#F3F8FB',
+    },
+    containerDarkTheme: {
+        backgroundColor: '#F3F8FB',
     },
     toolbar: {
         flex: none,
@@ -186,12 +208,12 @@ const styles = StyleSheet.create({
     },
     logo: {
         flex:2,
-        height:50,
+        height:55,
     },
     menu: {
         flex: 1,
         padding: 5,
-        backgroundColor: '#c5f6e3',
+        //backgroundColor: '#c5f6e3',
         /*borderWidth: 1,
         borderColor: '#ddd',
         borderStyle: 'solid',*/
@@ -209,7 +231,7 @@ const styles = StyleSheet.create({
         textAlign: alignCenter,
         marginLeft: 5,
         marginRight: 5,
-        color:'blue'
+        //color:'blue'
         //textDecorationLine: 'underline'
     }
 });

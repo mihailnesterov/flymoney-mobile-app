@@ -4,7 +4,9 @@ export default {
         light: "#e0e0e0",
         dark: "#666666",
         black: "#000000",
-        transparent: "transparent",
+        layout: '#F3F8FB',
+        darkblue: '#4B40A8',
+        transparent: "transparent",        
     },
     sizes: {
         none: 0,
@@ -38,6 +40,12 @@ export default {
         four:4,
         five:5
     },
+    flexDirection: {
+        row: 'row',
+        column: 'column',
+        rowReverse: 'row-reverse',
+        columnReverse: 'column-reverse',
+    },
     alignItems: {
         center: 'center',
         start: 'flex-start',
@@ -52,7 +60,7 @@ export default {
     },
     flexWrap: {
         wrap: 'wrap',
-        noWrap: 'no-wrap',
+        noWrap: 'nowrap',
     },
     textAlign: {
         alignCenter: 'center',

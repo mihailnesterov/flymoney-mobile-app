@@ -19,6 +19,7 @@ web-build/
 assets
 components/**/*.js
 !components/Customer.js
+!components/ToolBar.js
 containers/**/*.js
 !containers/Pannel.js
 api
