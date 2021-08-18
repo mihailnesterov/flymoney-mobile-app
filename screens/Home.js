@@ -16,9 +16,10 @@ import {
 import theme from '../themes/default';
 import { getAllProducts, getProductVariations } from '../api/products';
 import { getAllFlymoneyExchange } from '../api/posts';
+import ToolBar from '../components/ToolBar';
 import Customer from '../components/Customer';
 
-export default Home = () => {
+export default Home = ({ navigation }) => {
     
     const [exchangeRates, setExchangeRates] = useState([]);
     const [products, setProducts] = useState([]);
@@ -50,13 +51,14 @@ export default Home = () => {
             })
             .finally(() => setLoading(false));
     }, []);
-    
-    console.log('colorScheme', colorScheme);
 
     return (
         <SafeAreaView style={[styles.container, themeContainerStyle]}>
+            
+            <ToolBar navigation={navigation} />
+            
             <Customer />
-            {/*<Text>{colorScheme}</Text>*/}
+            
             <SafeAreaView style={{
                 flex: 1,
                 backgroundColor: '#ffffff',

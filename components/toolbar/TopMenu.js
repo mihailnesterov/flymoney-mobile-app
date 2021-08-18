@@ -2,17 +2,18 @@ import React from 'react';
 import { 
     StyleSheet, 
     Text, 
-    Image,
+    Button,
     View
 } from 'react-native';
 import theme from '../../themes/default';
 
-export default TopMenu = ({ isHidden }) => {
+export default TopMenu = ({ isHidden, navigation }) => {
+    console.log(navigation);
     return(
         isHidden !== false &&
         <View style={styles.container}>
             <Text style={styles.menuItem}>Обмен</Text>
-            <Text style={styles.menuItem}>Соглашение</Text>
+            <Text style={styles.menuItem} onPress={() => navigation.push('Agreement')}>Соглашение</Text>
             <Text style={styles.menuItem}>FAQ</Text>
             <Text style={styles.menuItem}>Безопасность</Text>
             <Text style={styles.menuItem}t>Как создать?</Text>

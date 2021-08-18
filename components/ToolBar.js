@@ -9,7 +9,7 @@ import { Fontisto } from '@expo/vector-icons';
 import theme from '../themes/default';
 import TopMenu from './toolbar/TopMenu';
 
-export default ToolBar = () => {
+export default ToolBar = ({ navigation }) => {
 
     const iconSize = theme.sizes.xlarge;
     const iconColor = theme.colors.darkblue;
@@ -34,7 +34,7 @@ export default ToolBar = () => {
                     <Fontisto name="nav-icon-a" size={18} color="white" />
                 </Text>
 
-                <TopMenu isHidden={isTopMenuHidden} />
+                <TopMenu isHidden={isTopMenuHidden} navigation={ navigation } />
                 
                 <Text style={styles.topText}>
                     Время работы сервиса с 09:00 - 21:00
