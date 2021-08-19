@@ -68,8 +68,7 @@ const Send = (props) => {
                     )
                 )
             )
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false));
+            .catch(error => console.log(error));
     }, []);
 
     const [selectedBankID, setSelectedBankID] = useState(null);
@@ -87,7 +86,7 @@ const Send = (props) => {
             
             setBankSendSuccess(selectedBank);            
             setAmountReceive();
-console.log('selectedBank', selectedBank);
+
         }
     }, [selectedBank]);
     
