@@ -21,6 +21,7 @@ components/**/*.js
 !components/Customer.js
 !components/ToolBar.js
 !components/toolbar/TopMenu.js
+!components/Send.js
 containers/**/*.js
 !containers/Pannel.js
 !containers/Block.js

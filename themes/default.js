@@ -6,7 +6,7 @@ export default {
         black: "#000000",
         layout: '#F3F8FB',
         darkblue: '#4B40A8',
-        transparent: "transparent",        
+        transparent: "transparent"
     },
     sizes: {
         none: 0,

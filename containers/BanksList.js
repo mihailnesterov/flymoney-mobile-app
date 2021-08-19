@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import theme from '../themes/default';
 
 export default BanksList = ({ children }) => (
-    <View style={styles.container}>{children}</View>
+    <SafeAreaView style={styles.container}>{children}</SafeAreaView>
 );
 
 const { one } = theme.flex;
