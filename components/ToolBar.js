@@ -24,6 +24,8 @@ export default ToolBar = ({ navigation }) => {
     return (
         <View style={styles.toolbar}>
             <View style={styles.topContainer}>
+
+                
                 <Text 
                     style={[
                         styles.topMenuButton, 
@@ -34,7 +36,7 @@ export default ToolBar = ({ navigation }) => {
                     <Fontisto name="nav-icon-a" size={18} color="white" />
                 </Text>
 
-                <TopMenu isHidden={isTopMenuHidden} navigation={ navigation } />
+                
                 
                 <Text style={styles.topText}>
                     Время работы сервиса с 09:00 - 21:00
@@ -73,6 +75,9 @@ export default ToolBar = ({ navigation }) => {
                     </Text>
                 </View>
             </View>
+            
+            <TopMenu isHidden={isTopMenuHidden} navigation={ navigation } />
+            
         </View>
     );
 }

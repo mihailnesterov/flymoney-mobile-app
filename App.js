@@ -21,7 +21,8 @@ export default App = () => {
             <NavigationContainer>
                 <Stack.Navigator 
                     initialRouteName="Home" 
-                    screenOptions={{ headerShown: false }}>
+                    screenOptions={{ headerShown: false }}
+                >
                     <Stack.Screen name="Home" component={Home} />
                     <Stack.Screen name="Order" component={Order} />
                     <Stack.Screen name="Auth" component={Auth} />

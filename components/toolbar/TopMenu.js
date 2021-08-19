@@ -1,34 +1,62 @@
 import React from 'react';
 import { 
     StyleSheet, 
-    Text, 
-    Button,
-    View
+    Text,
+    View,
+    TouchableOpacity,
+    TouchableWithoutFeedback
 } from 'react-native';
 import theme from '../../themes/default';
 
+const screens = [
+    {
+        screen: 'Home',
+        title: 'Обмен',
+    },
+    {
+        screen: 'Agreement',
+        title: 'Соглашение',
+    },
+    {
+        screen: 'Faq',
+        title: 'FAQ',
+    },
+    {
+        screen: 'Safety',
+        title: 'Безопасность',
+    },
+    {
+        screen: 'Howto',
+        title: 'Как создать?',
+    },
+    {
+        screen: 'Account',
+        title: 'Аккаунт',
+    }
+];
+
 export default TopMenu = ({ isHidden, navigation }) => {
-    console.log(navigation);
+
     return(
         isHidden !== false &&
         <View style={styles.container}>
-            <Text style={styles.menuItem}>Обмен</Text>
-            <Text style={styles.menuItem} onPress={() => navigation.push('Agreement')}>Соглашение</Text>
-            <Text style={styles.menuItem}>FAQ</Text>
-            <Text style={styles.menuItem}>Безопасность</Text>
-            <Text style={styles.menuItem}t>Как создать?</Text>
-            <Text style={styles.menuItem}>Аккаунт</Text>
+            {
+                screens.map((item, index) => (
+                    <TouchableOpacity 
+                        key={index} 
+                        onPress={() => navigation.push(item.screen)}
+                    >
+                        <Text style={styles.menuItem}>{item.title}</Text>
+                    </TouchableOpacity>
+                ))
+            }
         </View>
     );
 }
 
-const { flex } = theme.display;
-const { one, two } = theme.flex;
-const { row } = theme.flexDirection;
-const { light, white, layout, darkblue } = theme.colors;
-const { none, xsmall, small, medium, large, xlarge } = theme.sizes;
-const { center } = theme.alignItems;
-const { alignCenter, alignLeft, alignRight } = theme.textAlign;
+const { one } = theme.flex;
+const { white, layout, darkblue } = theme.colors;
+const { none, xsmall, small, large, xlarge } = theme.sizes;
 
 const styles = StyleSheet.create({
     container: {
@@ -39,15 +67,14 @@ const styles = StyleSheet.create({
         zIndex: 999,
         elevation: 999,
         backgroundColor: darkblue,
-        
         padding: small,
         borderColor: layout,
-        borderWidth: ( StyleSheet.hairlineWidth * 4 ),
+        borderWidth: ( StyleSheet.hairlineWidth * 4 )
     },
     menuItem: {
         fontSize: large,
         color: white,
-        margin: xsmall,
-        textDecorationLine: 'underline',
+        padding: small,
+        textDecorationLine: 'underline'
     }
 });

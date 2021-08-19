@@ -10,8 +10,7 @@ import {
     TextInput, 
     FlatList, 
     ActivityIndicator,
-    useColorScheme,
-    TouchableOpacity
+    useColorScheme
 } from 'react-native';
 import theme from '../themes/default';
 import { getAllProducts, getProductVariations } from '../api/products';
