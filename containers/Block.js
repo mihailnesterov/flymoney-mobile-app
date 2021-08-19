@@ -2,15 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import theme from '../themes/default';
 
-export default Pannel = ({ children }) => (
-    children &&
+export default Block = ({ children }) => (
     <View style={styles.container}>{children}</View>
 );
 
-
 const { one } = theme.flex;
 const { white } = theme.colors;
-const { none, medium } = theme.sizes;
+const { none, xsmall, medium } = theme.sizes;
 
 const styles = StyleSheet.create({
     container: {
@@ -21,6 +19,7 @@ const styles = StyleSheet.create({
         shadowColor: '#d8dde5',
         shadowOffset: { width: 0, height: 20 },
         shadowOpacity: 0.8,
-        shadowRadius: 2
+        shadowRadius: 2,
+        borderRadius: xsmall,
     },
 });

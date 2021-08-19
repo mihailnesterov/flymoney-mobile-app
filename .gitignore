@@ -23,4 +23,6 @@ components/**/*.js
 !components/toolbar/TopMenu.js
 containers/**/*.js
 !containers/Pannel.js
+!containers/Block.js
+!containers/BanksList.js
 api
