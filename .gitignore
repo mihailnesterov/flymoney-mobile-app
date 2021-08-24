@@ -27,4 +27,5 @@ containers/**/*.js
 !containers/Pannel.js
 !containers/Block.js
 !containers/BanksList.js
+!containers/Screen.js
 api
