@@ -1,11 +1,16 @@
-import React from 'react';
-import { StyleSheet, SafeAreaView, useColorScheme } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, SafeAreaView, useColorScheme, ScrollView, LogBox } from 'react-native';
 import theme from '../themes/default';
 import ToolBar from '../components/ToolBar';
 import Customer from '../components/Customer';
 import Send from '../components/Send';
+import Reserve from '../components/Reserve';
 
 export default Home = ({ navigation }) => {
+
+    useEffect(() => {
+        LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+    }, [])
 
     const colorScheme = useColorScheme();
     
@@ -15,10 +20,13 @@ export default Home = ({ navigation }) => {
         styles.containerDarkTheme;
 
     return (
-        <SafeAreaView style={ [ styles.container, themeContainerStyle ] }>            
+        <SafeAreaView style={ [ styles.container, themeContainerStyle ] }>
             <ToolBar navigation={ navigation } />
             <Customer />
-            <Send />           
+            <ScrollView>
+                <Send />
+                <Reserve />
+            </ScrollView>
         </SafeAreaView>
     );
 }

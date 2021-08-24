@@ -155,7 +155,6 @@ const Send = (props) => {
                                     }
                                 {'    '}
                                 <Text style={styles.itemTextName}>{item.name}</Text>
-                                <Text style={styles.itemTextReserve}> Резерв {toFloat(item.stock_quantity)}</Text>
                             </Text>
                         )}
                     />
@@ -223,10 +222,6 @@ const styles = StyleSheet.create({
         fontSize: large,
         marginLeft: large, 
         color: "#222222",
-    },
-    itemTextReserve: {
-        fontSize: medium,
-        color: "#7854f7",
     }
 });
 
