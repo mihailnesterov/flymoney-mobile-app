@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, Octicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Home from '../screens/Home';
 import Account from '../screens/Account';
+import Agreement from '../screens/Agreement';
 import Faq from '../screens/Faq';
 import Howto from '../screens/Howto';
 
@@ -64,7 +65,7 @@ export default BottomTabNavigator = () => {
         >
             { TabScreen("Home", Home, 'В начало') }
             { TabScreen("Account", Account, 'Аккаунт') }
-            { TabScreen("Agreement", Account, 'Соглашение') }
+            { TabScreen("Agreement", Agreement, 'Соглашение') }
             { TabScreen("Faq", Faq, 'FAQ') }
             { TabScreen("Howto", Howto, 'Как создать?') }
            

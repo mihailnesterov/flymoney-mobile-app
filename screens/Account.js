@@ -5,12 +5,13 @@ import {
     View
 } from 'react-native';
 import theme from '../themes/default';
+import ToolBar from '../components/ToolBar';
 
 export default Account = () => {
-
-
     return (
         <View style={styles.container}>
+            <ToolBar />
+
             <Text>Account</Text>
         </View>
     );

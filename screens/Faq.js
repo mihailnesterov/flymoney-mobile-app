@@ -7,10 +7,10 @@ import {
 import theme from '../themes/default';
 import ToolBar from '../components/ToolBar';
 
-export default Faq = ({ navigation }) => {
+export default Faq = () => {
     return (
         <View style={styles.container}>
-            <ToolBar navigation={navigation} />
+            <ToolBar />
             
             <Text>FAQ</Text>
         </View>
