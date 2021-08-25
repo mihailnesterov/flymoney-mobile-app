@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { 
-    Dimensions,
+import {
     StyleSheet,
     View,
-    SafeAreaView,
     Text,
     Image, 
     FlatList,
-    SectionList
+    TouchableHighlight
 } from 'react-native';
 import theme from '../themes/default';
 import { connect } from 'react-redux';
@@ -64,26 +62,27 @@ const Reserve = (props) => {
                         data={reserves}
                         keyExtractor={({ id }, index) => index.toString()}
                         renderItem={({ item }) => (
-                            <Text style={[
+                            <TouchableHighlight style={[
                                 styles.bankItem, 
                                 selectedReserveItemStyle( bankReceive, item )
                             ]}>
-                                {
-                                    (item.images && item.images.length > 0) ?
-                                    <Image
-                                        style={styles.itemImage}
-                                        source={{uri: item.images[0].src}}
-                                    />
-                                    :
-                                    '    '
-                                }
-                                {'    '}
-
-                                <Text style={styles.itemTextName}>{item.name}</Text>
-
-                                <Text style={styles.itemTextReserve}>{toFloat(item.stock_quantity)}</Text>
-                                
-                            </Text>
+                                <View style={styles.bankItemBlock}>
+                                    <Text>
+                                        {
+                                            (item.images && item.images.length > 0) ?
+                                            <Image
+                                                style={styles.itemImage}
+                                                source={{uri: item.images[0].src}}
+                                            />
+                                            :
+                                            '    '
+                                        }
+                                        {'    '}
+                                    </Text>
+                                    <Text style={styles.itemTextName}>{item.name}</Text>
+                                    <Text style={styles.itemTextReserve}>{toFloat(item.stock_quantity)}</Text>
+                                </View>
+                            </TouchableHighlight>
                         )}
                     />
                     :
@@ -96,13 +95,14 @@ const Reserve = (props) => {
 };
 
 const { flex } = theme.display;
-const { one } = theme.flex;
+const { one, two } = theme.flex;
 const { row } = theme.flexDirection;
+const { noWrap } = theme.flexWrap;
 const { center } = theme.alignItems;
 const { between } = theme.justifyContent;
 const { light, white, dark } = theme.colors;
 const { none, xsmall, small, medium, large } = theme.sizes;
-const { alignCenter, alignLeft, alignRight } = theme.textAlign;
+const { alignLeft, alignRight } = theme.textAlign;
 
 const styles = StyleSheet.create({
     header: {
@@ -127,6 +127,14 @@ const styles = StyleSheet.create({
         marginBottom: medium, 
         borderRadius: 3,
     },
+    bankItemBlock: {
+        flex: one,
+        display: flex,
+        flexDirection: row,
+        flexWrap: noWrap,
+        alignItems: center,
+        justifyContent: between
+    },
     selectedBankItem: {
         backgroundColor: light
     },
@@ -135,11 +143,15 @@ const styles = StyleSheet.create({
         height: 20
     },
     itemTextName: {
+        flex: two,
         fontSize: large,
-        color: "#222222" 
+        color: "#222222",
+        textAlign: alignLeft
     },
     itemTextReserve: {
-        color: "#7854f7" 
+        flex: one,
+        color: "#7854f7",
+        textAlign: alignRight
     }
 });
 
