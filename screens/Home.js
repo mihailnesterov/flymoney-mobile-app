@@ -7,10 +7,10 @@ import Send from '../components/Send';
 import Reserve from '../components/Reserve';
 import LastExchanges from '../components/LastExchanges';
 
-export default Home = ({ navigation }) => {
+export default Home = () => {
     return (
         <Screen>
-            <ToolBar navigation={ navigation } />
+            <ToolBar />
             <Customer />
             <ScrollView>
                 <Send />
