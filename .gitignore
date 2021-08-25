@@ -17,6 +17,7 @@ web-build/
 
 # misc
 assets
+deprecated/
 components/**/*.js
 !components/Customer.js
 !components/ToolBar.js
@@ -29,6 +30,7 @@ containers/**/*.js
 !containers/Block.js
 !containers/BanksList.js
 !containers/Screen.js
+!containers/Page.js
 navigation/**/*.js
 !navigation/BottomTabNavigator.js
 api
