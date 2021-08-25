@@ -107,6 +107,7 @@ const { alignCenter, alignLeft, alignRight } = theme.textAlign;
 const styles = StyleSheet.create({
     header: {
         marginTop: none,
+        marginBottom: small,
         fontSize: ( large * 1.1 )
     },
     banksList: {
