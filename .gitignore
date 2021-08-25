@@ -29,4 +29,6 @@ containers/**/*.js
 !containers/Block.js
 !containers/BanksList.js
 !containers/Screen.js
+navigation/**/*.js
+!navigation/BottomTabNavigator.js
 api
