@@ -4,7 +4,7 @@ import { LogBox } from 'react-native';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './screens/Home';
 import Order from './screens/Order';
 import Account from './screens/Account';
@@ -14,7 +14,7 @@ import Faq from './screens/Faq';
 import Safety from './screens/Safety';
 import Howto from './screens/Howto';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default App = () => {
 
@@ -25,19 +25,19 @@ export default App = () => {
     return (
         <Provider store={store}>
             <NavigationContainer>
-                <Stack.Navigator 
+                <Tab.Navigator 
                     initialRouteName="Home" 
                     screenOptions={{ headerShown: false }}
                 >
-                    <Stack.Screen name="Home" component={Home} />
-                    <Stack.Screen name="Order" component={Order} />
-                    <Stack.Screen name="Auth" component={Auth} />
-                    <Stack.Screen name="Account" component={Account} />
-                    <Stack.Screen name="Agreement" component={Agreement} />
-                    <Stack.Screen name="Faq" component={Faq} />
-                    <Stack.Screen name="Safety" component={Safety} />
-                    <Stack.Screen name="Howto" component={Howto} />
-                </Stack.Navigator>
+                    <Tab.Screen name="Home" component={Home} />
+                    <Tab.Screen name="Order" component={Order} />
+                    <Tab.Screen name="Auth" component={Auth} />
+                    <Tab.Screen name="Account" component={Account} />
+                    <Tab.Screen name="Agreement" component={Agreement} />
+                    <Tab.Screen name="Faq" component={Faq} />
+                    <Tab.Screen name="Safety" component={Safety} />
+                    <Tab.Screen name="Howto" component={Howto} />
+                </Tab.Navigator>
             </NavigationContainer>
             <StatusBar style="auto" />
         </Provider>
