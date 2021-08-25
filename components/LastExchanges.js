@@ -75,12 +75,12 @@ const LastExchanges = (props) => {
                                 <View style={styles.listItemBlock}>
                                     <Text style={styles.textDate}>
                                         &#128197;
-                                        {' '}
-                                        {getOrderDate(item.date_created)}
+                                        &nbsp;
+                                        { getOrderDate( item.date_created ) }
                                     </Text>
                                     <Text style={styles.textSum}>
                                         <Text style={styles.textBold}>{item.line_items[0].total}</Text>
-                                        {' '}
+                                        &nbsp;
                                         <Text style={styles.textColored}>{item.currency}</Text>
                                     </Text>
                                 </View>
