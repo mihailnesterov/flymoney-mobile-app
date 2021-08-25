@@ -23,6 +23,7 @@ components/**/*.js
 !components/toolbar/TopMenu.js
 !components/Send.js
 !components/Reserve.js
+!components/LastExchanges.js
 containers/**/*.js
 !containers/Pannel.js
 !containers/Block.js

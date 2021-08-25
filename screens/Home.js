@@ -5,6 +5,7 @@ import ToolBar from '../components/ToolBar';
 import Customer from '../components/Customer';
 import Send from '../components/Send';
 import Reserve from '../components/Reserve';
+import LastExchanges from '../components/LastExchanges';
 
 export default Home = ({ navigation }) => {
     return (
@@ -14,6 +15,7 @@ export default Home = ({ navigation }) => {
             <ScrollView>
                 <Send />
                 <Reserve />
+                <LastExchanges />
             </ScrollView>
         </Screen>
     );
