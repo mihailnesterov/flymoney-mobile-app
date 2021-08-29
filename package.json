@@ -22,7 +22,8 @@
     "react-native-web": "~0.13.12",
     "react-native-woocommerce-api": "^1.8.8",
     "react-redux": "^7.2.4",
-    "redux": "^4.1.1"
+    "redux": "^4.1.1",
+    "@react-native-async-storage/async-storage": "~1.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
