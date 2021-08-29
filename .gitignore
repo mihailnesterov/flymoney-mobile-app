@@ -18,13 +18,15 @@ web-build/
 # misc
 assets
 deprecated/
+toolbar/
 components/**/*.js
 !components/Customer.js
 !components/ToolBar.js
-!components/toolbar/TopMenu.js
 !components/Send.js
 !components/Reserve.js
 !components/LastExchanges.js
+!components/Loader.js
+!components/account/Login.js
 containers/**/*.js
 !containers/Pannel.js
 !containers/Block.js
